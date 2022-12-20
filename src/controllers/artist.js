@@ -1,12 +1,15 @@
-const db = require('../src/db/index.js');
+const db = require('../db/index.js');
 
 
 
-exports.create = async (req, res) => {
-    const name = req.body.name
-    const genre = req.body.genre
-
-    await res.sendStatus(201);
-    await db.query(INSERT INTO Artists [(name, genre )] VALUES (`${name}, ${genre}` )
-}
+exports.createArtist = async (req, res) => {
+    const { name, genre } = req.body
+  
+    try {
+      const { rows: [ artist ] } = await db.query(`INSERT INTO Artists (name, genre) VALUES ('${name}', '${genre}') RETURNING *`)
+      res.status(201).json(artist)
+    } catch (err) {
+      res.status(500).json(err.message)
+    }
+  }
 

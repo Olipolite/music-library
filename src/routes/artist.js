@@ -1,5 +1,5 @@
 const express = require ('express')
-const artistController = require('../controllers/artist');
+const artistController = require('../controllers/artist.js');
 
 const artistRouter = express.Router()
 
