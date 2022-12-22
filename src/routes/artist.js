@@ -5,4 +5,8 @@ const artistRouter = express.Router()
 
 artistRouter.post('/', artistController.createArtist);
 
+artistRouter.get('/', artistController.readArtist)
+
+artistRouter.get('/:id/', artistController.artistById)
+
 module.exports = artistRouter;
