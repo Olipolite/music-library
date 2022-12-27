@@ -9,4 +9,8 @@ artistRouter.get('/', artistController.readArtist)
 
 artistRouter.get('/:id/', artistController.artistById)
 
+artistRouter.put('/:id/', artistController.putArtist)
+
+artistRouter.patch('/:id/', artistController.patchArtist)
+
 module.exports = artistRouter;
