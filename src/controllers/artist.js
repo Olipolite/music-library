@@ -86,6 +86,20 @@ exports.patchArtist = async (req, res) => {
   }
 }
 
+exports.deleteArtist = async (req, res) => {
+  const id = req.params.id
+  const { name, genre } = req.body
+
+  try {
+    const { rows: [ artist ] } = await db.query(`DELETE FROM Artists WHERE id = $1 RETURNING *`, [ id ])
+    if (!artist) {
+      return res.status(404).json({ message: `artist ${id} does not exist` })
+    }
+    res.status(200).json(artist)
+  } catch (err) {
+    res.status(500).json(err.message)
+  }
+}
   // Romy showed me, will delete later on.
   //const databaseResponse = await db.query(`INSERT INTO Artists (name, genre) VALUES ('${name}', '${genre}') RETURNING *`)
   //const artist = databaseResponse.rows[0]

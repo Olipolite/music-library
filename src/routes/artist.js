@@ -13,4 +13,6 @@ artistRouter.put('/:id/', artistController.putArtist)
 
 artistRouter.patch('/:id/', artistController.patchArtist)
 
+artistRouter.delete('/:id', artistController.deleteArtist)
+
 module.exports = artistRouter;
