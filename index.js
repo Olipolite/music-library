@@ -1,4 +1,4 @@
-const app = require('./src/app.js')
+const app = require('./src/app.js');
 
 const APP_PORT = process.env.PRT || 4000;
 
